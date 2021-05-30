@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 # Create your models here.
 class Post(models.Model): #table in the db
+    this  = "Deep" 
     title = models.CharField(max_length=100)
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now) #(auto_now=True) #to ad date when the post is created
