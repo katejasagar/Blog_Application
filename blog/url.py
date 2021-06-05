@@ -1,12 +1,13 @@
 from django.urls import path
 from . import views
-from .views import( PostListView, PostDetailView, 
+from .views import( PostListView, PostDetailView, UserPostListView,
                 PostCreateView, PostUpdateView, PostDeletelView)
 
 urlpatterns = [
     # it will look for <app>/<model>_<viewtype>
     #                  blog/Post_list
-    path('', PostListView.as_view(), name = 'Blog-Home'), #Post list view is a class we neeed to convert it to a view hence we add the .as_view fn
+    path('', PostListView.as_view(), name = 'Blog-Home'),
+    path('user/<str:username>', UserPostListView.as_view(), name = 'user-posts'), #Post list view is a class we neeed to convert it to a view hence we add the .as_view fn
     path('post/<int:pk>/', PostDetailView.as_view(), name = 'post-detail'),
     path('post/<int:pk>/delete', PostDeletelView.as_view(), name = 'post-delete'),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name = 'post-update'),
